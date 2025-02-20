@@ -24,7 +24,8 @@ body {
 }
 
 h2,
-h3 {
+h3,
+p {
     color: var(--primary-white);
 }
 
@@ -93,5 +94,24 @@ h3 {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.movie-title {
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-article {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-self: center;
+    gap: 0.4rem;
+    width: 500px;
 }
