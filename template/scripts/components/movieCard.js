@@ -2,7 +2,6 @@ import { fetchTopMovies } from "../modules/api.js";
 
 export async function createCard() {
     let movies = await fetchTopMovies();
-    console.log(movies);
     let top20 = movies.slice(0, 20);
     let container = document.querySelector("#cardContainer");
 
