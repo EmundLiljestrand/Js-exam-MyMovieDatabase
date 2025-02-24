@@ -115,3 +115,7 @@ p {
     gap: 0.4rem;
     width: 500px;
 }
+
+.movie-card {
+    cursor: pointer;
+}
