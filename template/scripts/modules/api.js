@@ -4,7 +4,7 @@ export async function fetchTopMovies() {
             "https://santosnr6.github.io/Data/favoritemovies.json"
         );
         if (!response.ok) {
-            throw new Error("Fel");
+            throw new Error("Fel vid anrop");
         }
         return await response.json();
     } catch (error) {
