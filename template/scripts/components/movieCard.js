@@ -1,3 +1,5 @@
+import { isFavorite, toggleFavorite } from "./favorites.js";
+
 export function createCard(movie) {
     let card = document.createElement("article");
     card.classList.add("movie-card");
@@ -5,29 +7,11 @@ export function createCard(movie) {
 
     let title = document.createElement("h3");
     title.classList.add("movie-title");
-    title.textContent = movie.Title;
-
-    let poster = document.createElement("img");
-    poster.classList.add("movie-poster");
-    poster.src = movie.Poster;
-    poster.alt = `Poster of ${movie.Title}`;
-
-    card.appendChild(poster);
-    card.appendChild(title);
-
-    return card;
-}
-
-// second function (practiaclly the same as above) for displaying movie year in search card (movie.Year returns undefined in first api call)
-export function createDetailedCard(movie) {
-    let card = document.createElement("article");
-    card.classList.add("movie-card");
-    card.dataset.movieId = movie.imdbID;
-
-    let title = document.createElement("h3");
-    title.classList.add("movie-title");
-    title.textContent = `${movie.Title} (${movie.Year})`;
-    //needed to display tooltip from title getting cut short by ellipsis in css
+    // shows title with year, if year exists in api-fetch
+    title.textContent = movie.Year
+        ? `${movie.Title} (${movie.Year})`
+        : movie.Title;
+    // needed to display tooltip from title getting cut short by ellipsis in css
     title.title = `${movie.Title} (${movie.Year})`;
 
     let poster = document.createElement("img");
@@ -35,8 +19,18 @@ export function createDetailedCard(movie) {
     poster.src = movie.Poster;
     poster.alt = `Poster of ${movie.Title}`;
 
+    let favoriteButton = document.createElement("button");
+    favoriteButton.classList.add("favorite-button");
+    favoriteButton.textContent = isFavorite(movie.imdbID) ? "★" : "☆";
+    favoriteButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        toggleFavorite(movie);
+        favoriteButton.textContent = isFavorite(movie.imdbID) ? "★" : "☆";
+    });
+
     card.appendChild(poster);
     card.appendChild(title);
+    card.appendChild(favoriteButton);
 
     return card;
 }

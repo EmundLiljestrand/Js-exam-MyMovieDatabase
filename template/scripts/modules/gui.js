@@ -1,9 +1,5 @@
 import { fetchTopMovies, fetchMovieById, fetchMovies } from "./api.js";
-import {
-    createCard,
-    createDetailedCard,
-    createMovieInformation,
-} from "../components/movieCard.js";
+import { createCard, createMovieInformation } from "../components/movieCard.js";
 import { shuffle } from "../utils/utils.js";
 import { renderTrailers } from "./caroussel.js";
 import { listener } from "./event.js";
@@ -71,7 +67,7 @@ function displayMovies(movies) {
     }
 
     movies.forEach((movie) => {
-        cardContainer.appendChild(createDetailedCard(movie));
+        cardContainer.appendChild(createCard(movie));
     });
 
     if (!cardContainer.dataset.listenerAdded) {
