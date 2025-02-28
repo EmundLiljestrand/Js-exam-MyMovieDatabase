@@ -45,20 +45,40 @@ export function createMovieInformation(movie) {
     movieTitleYear.textContent = `${movie.Title} (${movie.Year})`;
 
     let moviePoster = document.createElement("img");
+    moviePoster.classList.add("movie-poster");
     moviePoster.src = `${movie.Poster}`;
     moviePoster.alt = `Poster of ${movie.Title}`;
 
     let movieDirector = document.createElement("p");
+    movieDirector.classList.add("detailed-movie-information");
     movieDirector.textContent = `Director: ${movie.Director}`;
 
     let movieGenre = document.createElement("p");
+    movieGenre.classList.add("detailed-movie-information");
     movieGenre.textContent = `Genre: ${movie.Genre}`;
 
     let movieRating = document.createElement("p");
-    movieRating.textContent = `Imdb rating: ${movie.imdbRating}/10`;
+    movieRating.classList.add("detailed-movie-information");
+    movieRating.textContent = `Imdb rating: ${movie.imdbRating}/10★`;
+
+    let togglePlotButton = document.createElement("button");
+    togglePlotButton.textContent = "Show Plot";
+    togglePlotButton.classList.add("toggle-plot-btn");
 
     let moviePlot = document.createElement("p");
+    moviePlot.classList.add("movie-plot");
     moviePlot.textContent = `Plot: ${movie.Plot}`;
+    moviePlot.style.display = "none";
+
+    togglePlotButton.addEventListener("click", () => {
+        if (moviePlot.style.display === "none") {
+            moviePlot.style.display = "block";
+            togglePlotButton.textContent = "Hide Plot";
+        } else {
+            moviePlot.style.display = "none";
+            togglePlotButton.textContent = "Show Plot";
+        }
+    });
 
     movieArticle.appendChild(movieTitleYear);
     movieArticle.appendChild(moviePoster);
@@ -66,6 +86,7 @@ export function createMovieInformation(movie) {
     movieArticle.appendChild(movieGenre);
     movieArticle.appendChild(movieRating);
     movieArticle.appendChild(moviePlot);
+    movieArticle.appendChild(togglePlotButton); // Lägg till knappen före ploten
 
     return movieArticle;
 }

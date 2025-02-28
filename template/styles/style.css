@@ -27,12 +27,14 @@ h2,
 h3,
 p {
     color: var(--primary-white);
+    text-align: center;
 }
 
 /* Utils */
 .content-wrapper {
     max-width: 1180px;
     margin: 0 auto;
+    padding: 1rem;
 }
 .center {
     margin: 0 auto;
@@ -53,6 +55,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .header__logo {
@@ -99,7 +102,7 @@ p {
 }
 
 .movie-title {
-    width: 300px;
+    max-width: 300px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -113,9 +116,137 @@ p {
     flex-direction: column;
     justify-self: center;
     gap: 0.4rem;
-    width: 500px;
+    width: 400px;
+    padding: 1rem;
+    background-color: rgba(26, 26, 26, 0.477);
+    border-radius: 20px;
 }
 
 .movie-card {
     cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.favorite-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0.626);
+    border: none;
+    padding: 5px 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.favorite-button:hover {
+    transform: scale(1.2);
+}
+
+.movie-title-year {
+    padding: 5px;
+    text-align: center;
+}
+
+.detailed-movie-information {
+    text-align: center;
+    width: 300px;
+    padding: 3px;
+}
+
+.toggle-plot-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-plot-btn:hover {
+    background-color: #45a049;
+}
+
+.movie-plot {
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 1.5;
+    width: 300px;
+    text-wrap: wrap;
+}
+
+@media only screen and (max-width: 450px) {
+    .movie-card {
+        width: 150px;
+    }
+
+    .movie-poster {
+        width: 150px;
+    }
+
+    .movie-article {
+        width: 200px;
+    }
+    .header {
+        padding: 1rem;
+    }
+    .header__logo {
+        width: 100px;
+    }
+
+    .header__fav-btn {
+        font-size: 1rem;
+    }
+    .header {
+        padding: 0.5rem;
+    }
+
+    .movie-plot,
+    .detailed-movie-information {
+        max-width: 150px;
+    }
+}
+
+@media only screen and (min-width: 450px) and (max-width: 600px) {
+    .movie-card {
+        width: 175px;
+    }
+
+    .movie-poster {
+        width: 175px;
+    }
+
+    .movie-article {
+        width: 300px;
+    }
+
+    .movie-plot,
+    .detailed-movie-information {
+        max-width: 250px;
+    }
+
+    .header {
+        padding: 1rem;
+    }
+    .header__logo {
+        width: 100px;
+    }
+
+    .header__form-btn {
+        width: 5rem;
+    }
+
+    .header__fav-btn {
+        font-size: 1rem;
+    }
+    .header {
+        padding: 0.5rem;
+    }
 }
